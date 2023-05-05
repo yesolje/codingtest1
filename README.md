@@ -1,7 +1,7 @@
 <h1>한터글로벌 코딩테스트 1번 문제</h1>
 
 <h2>0.구현 언어 및 프레임워크</h2>
-spring boot, JAVA 11, javascript, gradle build<br/><br/>
+spring boot, JAVA 11, javascript, gradle build , tomcat<br/><br/>
 
 <h2>1.결과화면</h2>
 <span>"남자" 검색 시</span>
