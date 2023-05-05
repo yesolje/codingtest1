@@ -12,8 +12,13 @@
     <span>검색할 게시판 이름 또는 번호를 입력하세요 : </span><input type="text" id="filter">
     <button id="search">GO</button>
 </div>
+<div>
+    <span>검색 결과 : </span>
+    <div id="resultHere"></div>
+</div>
 <script>
-    document.querySelector('#search').addEventListener("click", function(event){
+    var searchResult = "";
+    var callFetchData = function(){
         var filter = document.querySelector('#filter').value;
         try{
             const response = fetch("/search",{
@@ -25,6 +30,14 @@
         }catch(error){
             alert(error);
         }
+    };
+    document.querySelector('#search').addEventListener("click", async function(event){
+        document.querySelector('#resultHere').innerText  = '';
+        searchResult = await callFetchData();
+        console.log(searchResult);
+        var resultTag = document.querySelector('#resultHere');
+        var textNode = document.createTextNode(JSON.stringify(searchResult));
+        resultTag.appendChild(textNode);
     });
 </script>
 </body>
