@@ -18,6 +18,8 @@
 </div>
 <script>
     var searchResult = "";
+
+    //비동기로 백단 데이터 호출
     var callFetchData = function(){
         var filter = document.querySelector('#filter').value;
         try{
@@ -31,13 +33,22 @@
             alert(error);
         }
     };
+
+    //이벤트 리스너 => 검색버튼 클릭시 결과값 div 안에 출력
     document.querySelector('#search').addEventListener("click", async function(event){
         document.querySelector('#resultHere').innerText  = '';
         searchResult = await callFetchData();
         console.log(searchResult);
         var resultTag = document.querySelector('#resultHere');
-        var textNode = document.createTextNode(JSON.stringify(searchResult));
+        var textNode;
+
+        if(searchResult.length!=0){
+            textNode = document.createTextNode(JSON.stringify(searchResult));
+        }else{
+            textNode = document.createTextNode("게시판 명 또는 번호를 다시 확인해 주십시오");
+        }
         resultTag.appendChild(textNode);
+
     });
 </script>
 </body>
